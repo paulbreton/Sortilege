@@ -1,0 +1,12 @@
+:root {
+  --text-primary: blue;
+  /*
+  --text-secondary: ;
+  --background-primary: ;
+  --background-secondary: ;
+  */
+}
+
+body {
+  margin: 0;
+}

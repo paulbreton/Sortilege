@@ -1,15 +1,13 @@
 <template>
-  <div>
-    test coucou
-  </div>
+  <nav>
+    NAV-BAR ICI
+  </nav>
 </template>
 
-<script>
-export default {
-
+<style scoped>
+nav {
+  color: var(--text-primary);
+  background-color: bisque;
+  padding: 1rem;
 }
-</script>
-
-<style lang="scss">
-
 </style>
