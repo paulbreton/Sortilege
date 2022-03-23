@@ -1,3 +1,59 @@
 <template>
-  <h1>INDEX</h1>
+  <div>
+    <h1>{{ name }}</h1>
+    <div class="div-test">
+      <span>New name</span>
+      <input v-model="newName" type="text">
+    </div>
+    <div>
+      <span>reactive: {{ newName }}</span>
+      <button @click="changeName">Change name</button>
+    </div>
+    <div class="div-test">
+      <span>Compteur: </span>
+      <span>{{ compter }}</span>
+      <button @click="increase">Increase</button>
+    </div>
+    <button @click="reset">Reset</button>
+  </div>
 </template>
+
+<script>
+import { computed, ref } from '@vue/composition-api'
+export default {
+  setup (_, { root }) {
+    const compter = ref(0)
+    const newName = ref('')
+    const name = computed(() => root.$store.state.filters.name)
+
+    const changeName = () => {
+      root.$store.dispatch('filters/fetchName', newName.value)
+    }
+
+    const reset = () => {
+      root.$store.dispatch('filters/resetName')
+      newName.value = ''
+      compter.value = 0
+    }
+
+    const increase = () => {
+      compter.value += 1
+    }
+
+    return {
+      name,
+      changeName,
+      reset,
+      compter,
+      increase,
+      newName
+    }
+  }
+}
+</script>
+
+<style lang="css" scoped>
+.div-test {
+  margin: 1rem;
+}
+</style>
