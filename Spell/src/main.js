@@ -8,6 +8,16 @@ import '@/assets/css/main.css'
 import store from './store/index'
 import VueCompositionAPI from '@vue/composition-api'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faFontAwesome)
+library.add(fas)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
 Vue.config.productionTip = false
 
 Vue.component('Default', Default)
