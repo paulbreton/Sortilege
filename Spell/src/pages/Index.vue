@@ -1,53 +1,12 @@
 <template>
-  <div>
-    <h1>{{ name }}</h1>
-    <div class="div-test">
-      <span>New name</span>
-      <input v-model="newName" type="text">
-    </div>
-    <div>
-      <span>reactive: {{ newName }}</span>
-      <button @click="changeName">Change name</button>
-    </div>
-    <div class="div-test">
-      <span>Compteur: </span>
-      <span>{{ compter }}</span>
-      <button @click="increase">Increase</button>
-    </div>
-    <button @click="reset">Reset</button>
-  </div>
+  <Index />
 </template>
 
 <script>
-import { computed, ref } from '@vue/composition-api'
+import Index from '@/components/Index.vue'
 export default {
-  setup (_, { root }) {
-    const compter = ref(0)
-    const newName = ref('')
-    const name = computed(() => root.$store.state.filters.name)
-
-    const changeName = () => {
-      root.$store.dispatch('filters/fetchName', newName.value)
-    }
-
-    const reset = () => {
-      root.$store.dispatch('filters/resetName')
-      newName.value = ''
-      compter.value = 0
-    }
-
-    const increase = () => {
-      compter.value += 1
-    }
-
-    return {
-      name,
-      changeName,
-      reset,
-      compter,
-      increase,
-      newName
-    }
+  components: {
+    Index
   }
 }
 </script>
