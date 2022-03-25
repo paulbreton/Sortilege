@@ -1,10 +1,10 @@
 <template>
   <nav>
         <img src="../assets/logo.png" height="40vh">
-        <a href="#" class="name">Sortilege</a>
+        <router-link class="name" to="/">Sortilege </router-link>
         <ul>
             <li><router-link to="/configuration">Configuration </router-link></li>
-            <li><a href="Resultat.html">Recherche</a></li>
+            <li><router-link to="/search">Recherche</router-link></li>
             <li><a href="Statistiques.html">Statistiques</a></li>
         </ul>
     </nav>
