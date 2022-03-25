@@ -3,7 +3,7 @@
         <img src="../assets/logo.png" height="40vh">
         <a href="#" class="name">Sortilege</a>
         <ul>
-            <li><a href="#">Configuration</a></li>
+            <li><router-link to="/configuration">Configuration </router-link></li>
             <li><a href="Resultat.html">Recherche</a></li>
             <li><a href="Statistiques.html">Statistiques</a></li>
         </ul>
