@@ -1,12 +1,38 @@
-:root {
-  --text-primary: blue;
-  /*
-  --text-secondary: ;
-  --background-primary: ;
-  --background-secondary: ;
-  */
+/**** POLICES *****/
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap'); 
+
+
+:root{
+    --font-title:'Nanum Pen Script', cursive;
+    --font-text:'Quicksand', sans-serif;
+    --font-stat:'Nanum Pen Script', cursive;
+}
+/**** COULEURS *****/
+:root{
+    --primary-color:#D7B9F3;
+    --secondary-color: #510574;
+    --other-color : #7C48A0 ;
+    --text-color : #F0F0F0;
+    --background-color:#000;
+    --background-secondary-color: #2C2C2C;
+}
+   
+
+/***** TAILLE POLICE *****/
+:root{
+    --nav-size:1.5rem;
+}
+/**** PARAM GENERAUX *****/
+body{
+    margin:0;
+    padding:0;
+    font-family:var(--font-text);
+    color: var(--text-color);
+    background-color: var(--background-color);
 }
 
-body {
-  margin: 0;
+a{
+    text-decoration: none;
+    color: var(--text-color);
 }
