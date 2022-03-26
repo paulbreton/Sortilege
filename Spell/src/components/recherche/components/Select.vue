@@ -1,5 +1,5 @@
 <template>
-  <select :value="valueSelect" @input="handleSelect">
+  <select v-model="valueSelect">
     <option v-for="(option, index) in options" :key="index">{{ option }}</option>
   </select>
 </template>
@@ -19,17 +19,19 @@ export default {
   },
   setup (props, { emit }) {
     const handleSelect = (option) => {
-      emit('handle-select', option.target.value)
+      emit('handle-select', option)
     }
 
-    const valueSelect = ref(null)
+    const valueSelect = ref(props.value)
 
     watch(
       () => props.value,
-      () => {
-        valueSelect.value = props.value
-      },
-      { immediate: true }
+      () => { valueSelect.value = props.value }
+    )
+
+    watch(
+      () => valueSelect.value,
+      () => { handleSelect(valueSelect.value) }
     )
 
     return {

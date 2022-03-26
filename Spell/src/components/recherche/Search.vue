@@ -35,7 +35,7 @@
         <Select :options="optionsBookAdd" :value="allSearchFilters.bookAddSelect" @handle-select="bookAddSelected"/>
       </template>
       <template v-slot:button>
-        <button @click="deleteFromBookAdd">Suppr</button>
+        <button @click="deleteBook" :disabled="disabledBtnDelete">Suppr</button>
       </template>
     </Search-filter>
     </div>
@@ -46,13 +46,13 @@
   </div>
 </template>
 <script>
-import { fetchBookAvailable, fetchAllSchool, fetchAllBranch, fetchAllClass } from '@/api/service'
+import { fetchAllSchool, fetchAllBranch, fetchAllClass } from '@/api/service'
 import { useHandleSelect } from './functions/handleSelect'
 import { useSearch } from './functions/search'
 import SearchFilter from '@/components/recherche/components/SearchFilter.vue'
 import Select from '@/components/recherche/components/Select.vue'
 import Input from '@/components/recherche/components/Input.vue'
-import { computed } from '@vue/composition-api'
+import { computed, onMounted } from '@vue/composition-api'
 
 export default {
   components: {
@@ -60,29 +60,37 @@ export default {
     Select,
     Input
   },
-  setup () {
-    const { reset, search, allSearchFilters } = useSearch()
+  setup (_, { root }) {
+    const { reset, search, allSearchFilters } = useSearch(root)
+
+    onMounted(() => {
+      root.$store.dispatch('filters/reset')
+      root.$store.dispatch('filters/fetchBookAvailable')
+    })
 
     const optionsBranch = fetchAllBranch()
     const optionsClass = fetchAllClass()
     const optionsSchool = fetchAllSchool()
-    const optionsBookAvailable = fetchBookAvailable()
-    const optionsBookAdd = computed(() => allSearchFilters.value.bookAdd)
+    const optionsBookAvailable = computed(() => root.$store.state.filters.bookAvailable)
+    const optionsBookAdd = computed(() => root.$store.state.filters.bookAdd)
 
-    const disabledBtnAdd = computed(() => allSearchFilters.value.bookAvailable === null || allSearchFilters.value.bookAvailable === undefined)
+    const disabledBtnAdd = computed(() => {
+      return (allSearchFilters.value.bookAvailable === null || allSearchFilters.value.bookAvailable === '' || allSearchFilters.value.bookAvailable === undefined || optionsBookAvailable.value.length === 0)
+    })
+    const disabledBtnDelete = computed(() => (allSearchFilters.value.bookAddSelect === null || allSearchFilters.value.bookAvailable === undefined || optionsBookAdd.value.length === 0))
 
     const { nameSelected, classSelected, schoolSelected, branchSelected, bookAvailableSelected, bookAddSelected } = useHandleSelect(allSearchFilters)
 
     const getSeachFilter = (key) => window.localStorage.getItem(key) === 'true'
 
-    /* const deleteBookAvailable = (value) => {
-      const index = optionsBookAvailable.findIndex((el) => el === value)
-      optionsBookAvailable.splice(index, 1)
-    } */
-
     const addBook = () => {
-      const value = allSearchFilters.value.bookAvailable
-      allSearchFilters.value.bookAdd.push(value)
+      root.$store.dispatch('filters/addBook', allSearchFilters.value.bookAvailable)
+      allSearchFilters.value.bookAvailable = optionsBookAvailable.value[0]
+    }
+
+    const deleteBook = () => {
+      root.$store.dispatch('filters/deleteBook', allSearchFilters.value.bookAddSelect)
+      allSearchFilters.value.bookAddSelect = optionsBookAdd.value[0]
     }
 
     return {
@@ -97,12 +105,14 @@ export default {
       reset,
       search,
       addBook,
+      deleteBook,
       optionsSchool,
       optionsBranch,
       optionsClass,
       optionsBookAvailable,
       optionsBookAdd,
-      disabledBtnAdd
+      disabledBtnAdd,
+      disabledBtnDelete
     }
   }
 }

@@ -2,7 +2,7 @@ import { ref } from '@vue/composition-api'
 import { findByBranch } from '@/api/service'
 import { sortTable } from '@/api/data'
 
-export function useSearch () {
+export function useSearch (root) {
   const allSearchFilters = ref({
     name: null,
     class: null,
@@ -23,6 +23,7 @@ export function useSearch () {
       bookAddSelect: null,
       bookAdd: []
     }
+    root.$store.dispatch('filters/reset')
   }
 
   const search = () => {
