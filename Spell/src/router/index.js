@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Search from '../components/recherche/Search.vue'
+import Search from '../pages/Search.vue'
 import Configuration from '../pages/Configuration.vue'
 import Index from '../pages/Index.vue'
 
