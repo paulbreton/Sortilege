@@ -23,9 +23,9 @@ export default {
   },
   setup (props, { root }) {
     const enableFilter = (value) => {
-      root.$store.dispatch(`enableFilters/fetch_${props.module}`, value)
+      window.localStorage.setItem(props.module, value)
     }
-    const enable = computed(() => root.$store.state.enableFilters[props.module])
+    const enable = computed(() => window.localStorage.getItem(props.module) === 'true')
 
     return {
       enable,
