@@ -17,17 +17,12 @@
     <button @click="reset">Reset</button>
 
     <font-awesome-icon icon="fa-solid fa-apple-whole" />
-    <Toggle />
   </div>
 </template>
 
 <script>
-import Toggle from '@/components/Toggle.vue'
 import { computed, ref } from '@vue/composition-api'
 export default {
-  components: {
-    Toggle
-  },
   setup (_, { root }) {
     const compter = ref(0)
     const newName = ref('')
