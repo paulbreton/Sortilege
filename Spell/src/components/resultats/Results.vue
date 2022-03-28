@@ -1,20 +1,24 @@
 <template>
   <div class="result">
     <Item
-      v-for = "(item, index) in items"
+      v-for = "(item, index) in results"
       :key="index"
-      :title="item.title"
-      :desc="item.desc"
+      :sort="item"
       />
   </div>
 
 </template>
 
 <script>
-import Item from '@/components/Item.vue'
+import Item from '@/components/resultats/Item.vue'
 export default {
   components: {
     Item
+  },
+  props: {
+    results: {
+      type: Array
+    }
   },
   setup () {
     const items = [

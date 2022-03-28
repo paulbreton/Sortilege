@@ -1,27 +1,36 @@
 <template>
 <div class="result-container">
-    <h3>{{title}}</h3>
+    <h3>{{ sort[1] }}</h3>
     <button class="desc_container" @click="openDesc">En savoir + </button>
     <div class="desc_item" v-if="showDesc" >
-        <p>{{desc}}</p>
+
     </div>
 </div>
 </template>
 
 <script>
-import { computed, ref } from '@vue/composition-api'
+import { ref } from '@vue/composition-api'
 export default {
   props: {
-    title: {
-      type: String
-    },
-    desc: {
-      type: String
+    sort: {
+      type: Array
     }
   },
   setup (props) {
-    const tmp = computed(() => props.title + ' ' + props.desc)
-
+    /*
+      livre: 0
+      ecole: 2
+      branches: 4
+      composantes: 5
+      temps: 6
+      portée: 7
+      cible: 8
+      durée: 9
+      jet: 10
+      resistance: 11
+      description: 12
+      necessaire: 13
+     */
     const showDesc = ref(false)
 
     const openDesc = () => {
@@ -29,7 +38,6 @@ export default {
     }
 
     return {
-      tmp,
       openDesc,
       showDesc
     }
