@@ -7,6 +7,12 @@ export function sortSingleStringArray (array, indice) {
   return res.sort().filter((element, index, array) => index === array.indexOf(element))
 }
 
-export function filterTable (array, indice, value) {
-  return array.filter((element) => element[indice].includes(value) && element[0] === 'MJ')
+export function mapValueNotNull (array) {
+  return array.map((element) => element !== null)
+}
+
+export const mergeArray = (array, indice) => {
+  return array.filter((element, index) => {
+    return array.findIndex((c) => c[indice] === element[indice]) !== index
+  })
 }

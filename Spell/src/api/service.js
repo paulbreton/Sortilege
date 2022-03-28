@@ -1,5 +1,5 @@
 import { sortTable } from './data'
-import { mapArray, sortSingleStringArray, filterTable } from './functions/sortTableValue'
+import { mapArray, sortSingleStringArray } from './functions/sortTableValue'
 
 export function fetchBookAvailable () {
   return sortSingleStringArray(sortTable, 0)
@@ -22,6 +22,29 @@ export function fetchAllLevel () {
   return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
-export function findByBranch (array, branch) {
-  return filterTable(array, 3, branch)
+/* ======================================= */
+/* ============ FIND BY FIELD ============ */
+/* ======================================= */
+
+export function findByName (name) {
+  // indice 1 ---> 'String'
+  return 'book[1].toUpperCase().includes(name.toUpperCase())'
+}
+
+export function findBySchool (school) {
+  // indice 2 ---> 'String'
+  return 'book[2] === school'
+}
+
+export function findByBranch (branch) {
+  // indice 3 ---> ['String', 'String']
+  return 'book[3].includes(branch)'
+}
+
+export function findByClass (className) {
+  /* indice 4 ---> [
+    ['String', 'Level'],
+    ['String', 'Level']
+  ] */
+  return 'book[4].flat().includes(className)'
 }
