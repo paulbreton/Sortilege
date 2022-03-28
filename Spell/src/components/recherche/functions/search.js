@@ -1,26 +1,31 @@
 import { ref } from '@vue/composition-api'
-import { findByName, findByBranch, findBySchool, findByClass } from '@/api/service'
+import { findByName, findByBranch, findBySchool, findByClass, findByBook, findByLevel } from '@/api/service'
 import { sortTable } from '../../../api/data'
 
-export function useSearch (root) {
+export function useSearch (root, emit) {
   const allSearchFilters = ref({
     name: null,
     class: null,
     school: null,
     branch: null,
+    level: null,
     bookAvailable: null,
-    bookAddSelect: null
+    bookAddSelect: null,
+    nbBookFind: 0
   })
 
   const reset = () => {
     allSearchFilters.value = {
       name: null,
       class: null,
+      level: null,
       school: null,
       branch: null,
       bookAvailable: null,
-      bookAddSelect: null
+      bookAddSelect: null,
+      nbBookFind: 0
     }
+    emit('results', [])
     root.$store.dispatch('filters/reset')
   }
 
@@ -29,6 +34,9 @@ export function useSearch (root) {
     const name = allSearchFilters.value.name
     const school = allSearchFilters.value.school
     const className = allSearchFilters.value.class
+    const level = parseInt(allSearchFilters.value.level)
+    const bookAdd = root.$store.state.filters.bookAdd
+
     let filters = ''
     if (name) {
       filters = filters.concat(findByName(name))
@@ -45,11 +53,27 @@ export function useSearch (root) {
       filters = filters.length ? filters.concat(' && ') : filters
       filters = filters.concat(findByClass(className))
     }
+    if (bookAdd.length > 0) {
+      filters = filters.length ? filters.concat(' && ') : filters
+      filters = filters.concat(findByBook(bookAdd))
+    }
+    if (level) {
+      filters = filters.length ? filters.concat(' && ') : filters
+      filters = filters.concat(findByLevel(level))
+    }
 
     // eslint-disable-next-line
     const array = sortTable
-    // eslint-disable-next-line
-    return eval('array.filter((book) => ' + filters + ')')
+
+    if (filters.length > 0) {
+      // eslint-disable-next-line
+      const res = eval('array.filter((book) => ' + filters + ')')
+      allSearchFilters.value.nbBookFind = res.length
+      emit('results', res)
+    } else {
+      allSearchFilters.value.nbBookFind = 0
+      emit('results', [])
+    }
   }
 
   return {

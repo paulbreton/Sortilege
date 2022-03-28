@@ -22,6 +22,11 @@
         <Select :options="optionsClass" :value="allSearchFilters.class" @handle-select="classSelected"/>
       </template>
     </Search-filter>
+    <Search-filter label="Recherche par niveau" v-if="getSeachFilter('level')">
+      <template v-slot:search>
+        <Select :options="optionsLevel" :value="allSearchFilters.level" @handle-select="levelSelected"/>
+      </template>
+    </Search-filter>
     <Search-filter label="Livres Dispo">
       <template v-slot:search>
         <Select :options="optionsBookAvailable" :value="allSearchFilters.bookAvailable" @handle-select="bookAvailableSelected"/>
@@ -39,6 +44,7 @@
       </template>
     </Search-filter>
     </div>
+    Nombre de livre trouvé : {{ allSearchFilters.nbBookFind }}
     <div class="group-btn">
       <button @click="reset">Reset</button>
       <button @click="search">Recherche</button>
@@ -46,7 +52,7 @@
   </div>
 </template>
 <script>
-import { fetchAllSchool, fetchAllBranch, fetchAllClass } from '@/api/service'
+import { fetchAllSchool, fetchAllBranch, fetchAllClass, fetchAllLevel } from '@/api/service'
 import { useHandleSelect } from './functions/handleSelect'
 import { useSearch } from './functions/search'
 import SearchFilter from '@/components/recherche/components/SearchFilter.vue'
@@ -60,8 +66,8 @@ export default {
     Select,
     Input
   },
-  setup (_, { root }) {
-    const { reset, search, allSearchFilters } = useSearch(root)
+  setup (_, { root, emit }) {
+    const { reset, search, allSearchFilters } = useSearch(root, emit)
 
     onMounted(() => {
       root.$store.dispatch('filters/reset')
@@ -71,6 +77,7 @@ export default {
     const optionsBranch = fetchAllBranch()
     const optionsClass = fetchAllClass()
     const optionsSchool = fetchAllSchool()
+    const optionsLevel = fetchAllLevel()
     const optionsBookAvailable = computed(() => root.$store.state.filters.bookAvailable)
     const optionsBookAdd = computed(() => root.$store.state.filters.bookAdd)
 
@@ -79,7 +86,7 @@ export default {
     })
     const disabledBtnDelete = computed(() => (allSearchFilters.value.bookAddSelect === null || allSearchFilters.value.bookAvailable === undefined || optionsBookAdd.value.length === 0))
 
-    const { nameSelected, classSelected, schoolSelected, branchSelected, bookAvailableSelected, bookAddSelected } = useHandleSelect(allSearchFilters)
+    const { nameSelected, classSelected, schoolSelected, branchSelected, bookAvailableSelected, bookAddSelected, levelSelected } = useHandleSelect(allSearchFilters)
 
     const getSeachFilter = (key) => window.localStorage.getItem(key) === 'true'
 
@@ -99,6 +106,7 @@ export default {
       classSelected,
       branchSelected,
       schoolSelected,
+      levelSelected,
       bookAvailableSelected,
       bookAddSelected,
       getSeachFilter,
@@ -111,6 +119,7 @@ export default {
       optionsClass,
       optionsBookAvailable,
       optionsBookAdd,
+      optionsLevel,
       disabledBtnAdd,
       disabledBtnDelete
     }

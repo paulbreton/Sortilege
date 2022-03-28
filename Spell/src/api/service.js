@@ -1,6 +1,10 @@
 import { sortTable } from './data'
 import { mapArray, sortSingleStringArray } from './functions/sortTableValue'
 
+/* ======================================= */
+/* ============== FETCH DATA ============= */
+/* ======================================= */
+
 export function fetchBookAvailable () {
   return sortSingleStringArray(sortTable, 0)
 }
@@ -48,3 +52,17 @@ export function findByClass (className) {
   ] */
   return 'book[4].flat().includes(className)'
 }
+
+export function findByBook (bookAdd) {
+  // indice 0 --> 'String'
+  return 'bookAdd.includes(book[0])'
+}
+
+export function findByLevel (level) {
+  // indice 0 --> 'String'
+  return 'book[4].flat().includes(level)'
+}
+
+/* ======================================= */
+/* =========== SORT RESULTATS ============ */
+/* ======================================= */

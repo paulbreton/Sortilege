@@ -15,6 +15,10 @@ export function useHandleSelect (allSearchFilters, optionsBookAvailable) {
     allSearchFilters.value.branch = value
   }
 
+  const levelSelected = (value) => {
+    allSearchFilters.value.level = value
+  }
+
   const bookAvailableSelected = (value) => {
     allSearchFilters.value.bookAvailable = value
   }
@@ -28,6 +32,7 @@ export function useHandleSelect (allSearchFilters, optionsBookAvailable) {
     nameSelected,
     schoolSelected,
     classSelected,
+    levelSelected,
     bookAvailableSelected,
     bookAddSelected
   }
