@@ -1,61 +1,33 @@
 <template>
-  <div>
-    <h1>{{ name }}</h1>
-    <div class="div-test">
-      <span>New name</span>
-      <input v-model="newName" type="text">
-    </div>
-    <div>
-      <span>reactive: {{ newName }}</span>
-      <button @click="changeName">Change name</button>
-    </div>
-    <div class="div-test">
-      <span>Compteur: </span>
-      <span>{{ compter }}</span>
-      <button @click="increase">Increase</button>
-    </div>
-    <button @click="reset">Reset</button>
-
-    <font-awesome-icon icon="fa-solid fa-apple-whole" />
+  <div class="home">
+    <h1>Sortilege</h1>
+    <p> je sais pas quoi mettre comme petit bla bla </p>
+    <img src="../assets/logo.png">
   </div>
 </template>
 
-<script>
-import { computed, ref } from '@vue/composition-api'
-export default {
-  setup (_, { root }) {
-    const compter = ref(0)
-    const newName = ref('')
-    const name = computed(() => root.$store.state.filters.name)
-
-    const changeName = () => {
-      root.$store.dispatch('filters/fetchName', newName.value)
-    }
-
-    const reset = () => {
-      root.$store.dispatch('filters/resetName')
-      newName.value = ''
-      compter.value = 0
-    }
-
-    const increase = () => {
-      compter.value += 1
-    }
-
-    return {
-      name,
-      changeName,
-      reset,
-      compter,
-      increase,
-      newName
-    }
-  }
-}
-</script>
-
 <style lang="css" scoped>
-.div-test {
-  margin: 1rem;
+.home{
+  background-color: var(--background-secondary-color);
+  background-image: url(../assets/fond.gif);
+  width:75vw;
+  height:70vh;
+  margin:10vh auto;
+  border-radius:10px;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
 }
+ img{
+   align-self: center;
+}
+.home h1, .home p{
+  text-align: center;
+}
+.home h1{
+  font-size:5rem;
+  margin:0;
+  font-family: var(--font-title);
+}
+
 </style>
