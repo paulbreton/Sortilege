@@ -1,12 +1,14 @@
 /**** POLICES *****/
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Neucha&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap'); ;
+
 
 
 :root{
-    --font-title:'Nanum Pen Script', cursive;
-    --font-text:'Quicksand', sans-serif;
+    --font-subtitle:'Neucha', cursive;
+    --font-text:'Neucha', cursive;
     --font-stat:'Nanum Pen Script', cursive;
+    --font-title:'Nanum Pen Script', cursive;
 }
 /**** COULEURS *****/
 
@@ -62,6 +64,7 @@ button:disabled:hover{
 }
 
 h1{
-    font-family: var(--font-title);
+    font-family: var(--font-subtitle);
     font-size:2.5rem;
+    letter-spacing: 2px;
 }
