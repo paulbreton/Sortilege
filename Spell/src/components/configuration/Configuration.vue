@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="configuration">
     <h1>Configuration</h1>
     <div class="group-filters">
       <FilterEnable module="name" label="Recherche nom"></FilterEnable>
@@ -20,8 +20,24 @@ export default {
   setup () {}
 }
 </script>
-<style scoped>
-.group-filters {
-  margin: 2rem 10rem;
+<style lang="css" scoped>
+.group-filters{
+  width:100%;
+  height:100%;
+  display: flex;
+  flex-direction:column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.configuration {
+  background-color: var(--background-secondary-color);
+  border-radius: 15px;
+  margin:5vh auto auto auto;
+  width:70vw;
+  height:70vh;
+  display: flex;
+  flex-direction:column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 </style>

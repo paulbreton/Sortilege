@@ -51,7 +51,6 @@ export default {
         width: 17.5vw;
         border-radius: 10px;
         padding: 5px;
-        height: 50vh;
     }
 
     h3 {

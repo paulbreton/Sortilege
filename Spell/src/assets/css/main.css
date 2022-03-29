@@ -9,13 +9,16 @@
     --font-stat:'Nanum Pen Script', cursive;
 }
 /**** COULEURS *****/
+
 :root{
-    --primary-color:#D7B9F3;
-    --secondary-color: #510574;
-    --other-color : #7C48A0 ;
-    --text-color : #F0F0F0;
-    --background-color:#000;
-    --background-secondary-color: #2C2C2C;
+    --primary-color:#AB8DF7;
+    --secondary-color: #34203f;
+    --other-color : #9287ae;
+    --title-color:#AB8DF7;
+    --text-color : #FFF;
+    --text-secondary-color :#121212;
+    --background-color:#121212;
+    --background-secondary-color: #2E2E2E;
 }
    
 
@@ -35,4 +38,30 @@ body{
 a{
     text-decoration: none;
     color: var(--text-color);
+}
+
+button{
+    border-radius : 5px; 
+    background-color:var(--primary-color);
+    box-shadow: none;
+    border:none;
+    padding:10px;
+    font-family: var(--font-text);
+    color:var(--text-secondary-color);
+}
+button:hover{
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+button:disabled{
+    background-color: var(--other-color);
+}
+button:disabled:hover{ 
+    background-color: var(--other-color);
+    color:var(--text-secondary-color);
+}
+
+h1{
+    font-family: var(--font-title);
+    font-size:2.5rem;
 }

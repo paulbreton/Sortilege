@@ -35,8 +35,11 @@
         margin : 0 20px;
         font-size:  var(--nav-size);
     }
+    nav img{
+        margin:0 10px;
+    }
     .name{
-        font-family: var(--font-stat);
+        font-family: var(--font-title);
         font-size: 2rem;
         padding:5px;
         color: var(--primary-color);

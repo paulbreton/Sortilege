@@ -20,5 +20,10 @@ export default {
 <style scoped>
 input {
   width: -webkit-fill-available;
+  height:25px;
+  border-radius:6px;
+  background-color:var(--background-color);
+  border:none;
+  color:var(--text-color);
 }
 </style>
