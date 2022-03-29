@@ -44,5 +44,11 @@ export default {
 <style scoped>
 select {
   width: 100%;
+  height:25px;
+  border-radius:6px;
+  background-color:var(--background-color);
+  border:none;
+  margin:3px 0;
+  color:var(--text-color);
 }
 </style>

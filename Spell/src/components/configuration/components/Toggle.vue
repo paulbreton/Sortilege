@@ -50,7 +50,7 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: var(--secondary-color);
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -68,12 +68,12 @@ export default {
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color:var(--primary-color);
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
+/*input:focus + .slider {
+  box-shadow: 0 0 1px var(--other-color);
+}*/
 
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
