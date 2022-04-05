@@ -42,7 +42,8 @@ export default {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
-        gap: 8px;
-        margin: 0 auto;
+        gap: 10px;
+        margin: 20px auto;
+        width:75vw;
     }
 </style>
