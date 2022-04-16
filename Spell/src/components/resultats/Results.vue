@@ -36,6 +36,6 @@ export default {
 }
 .no-result {
   padding: 1rem;
-  color: white;
+  color: var(--text-color);
 }
 </style>
