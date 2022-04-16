@@ -32,7 +32,7 @@
         <Select :options="optionsBookAvailable" :value="allSearchFilters.bookAvailable" @handle-select="bookAvailableSelected"/>
       </template>
       <template v-slot:button>
-        <button @click="addBook" :disabled="disabledBtnAdd">Add</button>
+        <button v-on:click="addBook" :disabled="disabledBtnAdd">Add</button>
       </template>
     </Search-filter>
     <Search-filter label="Livres Ajoutés">
@@ -40,14 +40,14 @@
         <Select :options="optionsBookAdd" :value="allSearchFilters.bookAddSelect" @handle-select="bookAddSelected"/>
       </template>
       <template v-slot:button>
-        <button @click="deleteBook" :disabled="disabledBtnDelete">Suppr</button>
+        <button v-on:click="deleteBook" :disabled="disabledBtnDelete">Suppr</button>
       </template>
     </Search-filter>
     </div>
     Nombre de livre trouvé : {{ allSearchFilters.nbBookFind }}
     <div class="group-btn">
-      <button @click="reset">Reset</button>
-      <button @click="search">Recherche</button>
+      <button v-on:click="reset">Reset</button>
+      <button v-on:click="search">Recherche</button>
     </div>
   </div>
 </template>
