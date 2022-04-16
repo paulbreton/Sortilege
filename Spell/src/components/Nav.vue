@@ -5,7 +5,7 @@
         <ul>
             <li><router-link to="/configuration">Configuration </router-link></li>
             <li><router-link to="/search">Recherche</router-link></li>
-            <li><router-link to="/">Statistiques</router-link></li>
+            <li><router-link to="/statistics">Statistiques</router-link></li>
         </ul>
     </nav>
 </template>

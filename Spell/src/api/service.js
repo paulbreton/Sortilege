@@ -66,3 +66,39 @@ export function findByLevel (level) {
 /* ======================================= */
 /* =========== SORT RESULTATS ============ */
 /* ======================================= */
+
+/* ======================================= */
+/* ============= STATISTICS ============== */
+/* ======================================= */
+
+// comptes le nombre de sorts
+export function countSorts () {
+  return sortTable.length
+}
+// comptes le nombre de livres
+export function countBooks () {
+  const books = fetchBookAvailable()
+  return books.length
+}
+// comptes le nombre d'écoles
+export function countSchools () {
+  const schools = fetchAllSchool()
+  return schools.length
+}
+
+function countSort (school) {
+  return sortTable.filter((sort) => sort[2] === school)
+}
+
+// Récupère la répartition des sorts par écoles
+export function countSortsBySchools () {
+  // pour chaque école, on compte le nombre de sort
+  const schools = fetchAllSchool()
+
+  const tabSortBySchool = []
+
+  schools.forEach(school => {
+    tabSortBySchool.push({'name': school, 'nbSorts': countSort(school).length})
+  })
+  return tabSortBySchool
+}
