@@ -86,9 +86,19 @@ export function countSchools () {
   return schools.length
 }
 
+function countSort (school) {
+  return sortTable.filter((sort) => sort[2] === school)
+}
+
 // Récupère la répartition des sorts par écoles
 export function countSortsBySchools () {
   // pour chaque école, on compte le nombre de sort
   const schools = fetchAllSchool()
-  return schools.length
+
+  const tabSortBySchool = []
+
+  schools.forEach(school => {
+    tabSortBySchool.push({'name': school, 'nbSorts': countSort(school).length})
+  })
+  return tabSortBySchool
 }

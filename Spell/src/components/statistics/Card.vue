@@ -1,6 +1,6 @@
 <template>
   <div class='stat-item'>
-    <slot class="test"/>
+    <slot />
     <Value :chiffre="chiffre" :desc="desc"/>
   </div>
 </template>
@@ -31,6 +31,7 @@ export default{
   border-radius:10px;
   width:100%;
   height:20vh;
+  display: flex;
   align-items: center;
   justify-content: space-between;
 }
