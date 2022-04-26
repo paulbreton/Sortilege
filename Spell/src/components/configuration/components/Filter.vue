@@ -21,7 +21,8 @@ export default {
       type: String
     }
   },
-  setup (props, { root }) {
+  setup (props) {
+    // mise dans le localStorage les filtres de recherche
     const enableFilter = (value) => {
       window.localStorage.setItem(props.module, value)
     }

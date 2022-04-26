@@ -1,4 +1,4 @@
-export function useHandleSelect (allSearchFilters, optionsBookAvailable) {
+export function useHandleSelect (allSearchFilters) {
   const nameSelected = (value) => {
     allSearchFilters.value.name = value
   }

@@ -2,6 +2,12 @@ import { sortTable } from './data'
 import { mapArray, sortSingleStringArray } from './functions/sortTableValue'
 
 /* ======================================= */
+/* Fichier contenant toutes les fonctions  */
+/* qui permettent d'intéragir avec le      */
+/* ficher de données                       */
+/* ======================================= */
+
+/* ======================================= */
 /* ============== FETCH DATA ============= */
 /* ======================================= */
 
@@ -29,6 +35,9 @@ export function fetchAllLevel () {
 /* ======================================= */
 /* ============ FIND BY FIELD ============ */
 /* ======================================= */
+
+// Fonction qui retourne des strings qui seront
+// concaténées puis évaluées dans un eval()
 
 export function findByName (name) {
   // indice 1 ---> 'String'
@@ -62,10 +71,6 @@ export function findByLevel (level) {
   // indice 0 --> 'String'
   return 'book[4].flat().includes(level)'
 }
-
-/* ======================================= */
-/* =========== SORT RESULTATS ============ */
-/* ======================================= */
 
 /* ======================================= */
 /* ============= STATISTICS ============== */

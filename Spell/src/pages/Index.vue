@@ -10,9 +10,3 @@ export default {
   }
 }
 </script>
-
-<style lang="css" scoped>
-.div-test {
-  margin: 1rem;
-}
-</style>

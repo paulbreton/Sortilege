@@ -2,6 +2,7 @@
   <div class="search-filter">
     <div class="label">{{ label }}</div>
     <div class="search">
+      <!-- injection soit d'un input ou un select -->
       <slot name="search"></slot>
     </div>
     <div class="btn">
@@ -9,6 +10,7 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   props: {
@@ -18,6 +20,7 @@ export default {
   }
 }
 </script>
+
 <style scoped>
 .search-filter {
   margin: 1rem 10rem;
@@ -44,13 +47,13 @@ export default {
 }
 
 .search {
-grid-area: search;
-align-items: stretch;
+  grid-area: search;
+  align-items: stretch;
 }
 
 .btn {
-grid-area: btn;
-justify-self: center;
+  grid-area: btn;
+  justify-self: center;
 }
 
 </style>

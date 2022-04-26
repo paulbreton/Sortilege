@@ -13,9 +13,6 @@ export default {
     desc: {
       type: String
     }
-  },
-  setup () {
-
   }
 }
 </script>

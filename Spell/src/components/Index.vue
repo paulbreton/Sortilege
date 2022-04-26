@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>Sortilege</h1>
-    <p> je sais pas quoi mettre comme petit bla bla </p>
+    <p> Bienvenu dans le monde des Sortileges </p>
     <img src="../assets/logo.png">
   </div>
 </template>

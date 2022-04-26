@@ -1,7 +1,6 @@
 import { fetchBookAvailable } from '@/api/service'
 
 const state = {
-  name: 'Page accueil',
   bookAvailable: [],
   bookAdd: []
 }
@@ -19,16 +18,10 @@ const actions = ({
   },
   reset ({ commit }) {
     commit('reset')
-  },
-  resetName ({ commit }) {
-    commit('setName', 'Page accueil')
   }
 })
 
 const mutations = ({
-  setName (state, newName) {
-    state.name = newName
-  },
   setBookAvailable (state, book) {
     state.bookAvailable = [...book]
   },

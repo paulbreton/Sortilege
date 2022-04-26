@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 
+// utilisation de la librairie FontAwesome pour les icones
 library.add(faFontAwesome)
 library.add(fas)
 

@@ -11,38 +11,38 @@
 </template>
 
 <style lang="css" scoped>
-   nav{
-       display:flex;
-       flex-direction: row;
-       justify-content: space-between;
-       height: 10vh;
-       margin:0;
-       position: sticky;
-       width:100wv;
-       align-items: center;
-       background-color: var(--background-secondary-color);
-   }
-   nav ul{
-        display: flex;
-        flex-direction: row;
-        width:90vw;
-        justify-content: flex-end;
-        margin:0;
-        list-style: none;
-    }
+nav{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 10vh;
+    margin:0;
+    position: sticky;
+    width:100wv;
+    align-items: center;
+    background-color: var(--background-secondary-color);
+}
+nav ul{
+    display: flex;
+    flex-direction: row;
+    width:90vw;
+    justify-content: flex-end;
+    margin:0;
+    list-style: none;
+}
 
-    nav ul li{
-        margin : 0 20px;
-        font-size:  var(--nav-size);
-    }
-    nav img{
-        margin:0 10px;
-    }
-    .name{
-        font-family: var(--font-title);
-        font-size: 2rem;
-        padding:5px;
-        color: var(--primary-color);
-    }
+nav ul li{
+    margin : 0 20px;
+    font-size:  var(--nav-size);
+}
+nav img{
+    margin:0 10px;
+}
+.name{
+    font-family: var(--font-title);
+    font-size: 2rem;
+    padding:5px;
+    color: var(--primary-color);
+}
 
 </style>

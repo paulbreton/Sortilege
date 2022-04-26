@@ -14,6 +14,7 @@ export function useSearch (root, emit) {
     nbBookFind: 0
   })
 
+  // remise à zéro des filtres sélectionnés
   const reset = () => {
     allSearchFilters.value = {
       name: null,
@@ -29,6 +30,7 @@ export function useSearch (root, emit) {
     root.$store.dispatch('filters/reset')
   }
 
+  // constitution de la requête selon les filtres sélectionnés
   const search = () => {
     const branch = allSearchFilters.value.branch
     const name = allSearchFilters.value.name

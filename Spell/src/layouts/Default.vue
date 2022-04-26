@@ -2,6 +2,7 @@
   <div>
     <Nav />
     <div class="container-page">
+      <!-- injection des composants dans le slot -->
       <slot></slot>
     </div>
   </div>
